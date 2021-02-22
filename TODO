@@ -13,6 +13,8 @@ frontend
   navbar
   fontawesome icons
   product list on home
+    add dummy data
+    create Product component
   rating
   react router
   product details
@@ -28,3 +30,4 @@ frontend
 
 TODO LATER:
 fix logo
+change background color of product cards
