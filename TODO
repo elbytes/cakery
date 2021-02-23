@@ -24,9 +24,15 @@ frontend
     routes for login
     routes from products on home page
   ##link footer
-  product details with ListGroup
+  product details with ListGroup---------------------
  backend
   backend routes
+  express
+ database
+  create atlas database
+  connect to database
+  database schema and model
+  
   
   
 
