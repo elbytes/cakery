@@ -40,3 +40,11 @@ main{
   color: #F2AB6D;
 }
 
+.btn-custom{
+  background-color: #772953;
+  color: aliceblue;
+}
+
+.test{
+  background-color: rgb(255, 245, 238);
+}

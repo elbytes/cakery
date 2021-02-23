@@ -114,6 +114,61 @@ const products = [
     countInStock: 2,
     rating: 4,
     numReviews: 9,
+  },{
+    _id: '11',
+    name: 'Chocolate Coffee Vanilla Chess Cake',
+    image: '/images/011.jpeg',
+    description:
+      'Chocolate Coffee Vanilla Chess Cake Chocolate Coffee Vanilla Chess Cake Chocolate Coffee Vanilla Chess Cake Chocolate Coffee Vanilla Chess Cake Chocolate Coffee Vanilla Chess Cake Chocolate Coffee Vanilla Chess Cake',
+    category: 'Cakes',
+    price:59.99,
+    countInStock: 2,
+    rating: 4,
+    numReviews: 5,
+  },{
+    _id: '12',
+    name: 'Oero Cupcake',
+    image: '/images/012.jpeg',
+    description:
+      'Oero Cupcake Oero Cupcake Oero Cupcake Oero Cupcake',
+    category: 'Cupcakes',
+    price:9.99,
+    countInStock: 0,
+    rating: 2.5,
+    numReviews: 3,
+  },{
+    _id: '13',
+    name: 'Lemon Meringue Pie',
+    image: '/images/013.jpeg',
+    description:
+      'Lemon Meringue Pie Lemon Meringue Pie Lemon Meringue Pie Lemon Meringue Pie Lemon Meringue Pie Lemon Meringue Pie',
+    category: 'Pies',
+    price:9.99,
+    countInStock: 2,
+    rating: 3.5,
+    numReviews: 30,
+  },{
+    _id: '14',
+    name: 'Triple Chocolate Cake',
+    image: '/images/014.jpeg',
+    description:
+      'Triple Chocolate Cake Triple Chocolate Cake Triple Chocolate Cake Triple Chocolate Cake Triple Chocolate Cake Triple Chocolate Cake',
+    category: 'Cakes',
+    price:9.99,
+    countInStock: 2,
+    rating: 3.5,
+    numReviews: 9,
+  },{
+    _id: '15',
+    name: 'Apple Pie',
+    image: '/images/015.jpeg',
+    description:
+      'Apple Pie Apple Pie Apple Pie Apple Pie',
+    category: 'Pies',
+    price:19.99,
+    countInStock: 2,
+    rating: 4.5,
+    numReviews: 24,
   }
 ]
 
