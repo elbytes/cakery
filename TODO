@@ -29,6 +29,7 @@ frontend
  setup backend environment
   backend routes
   express
+  install axios
   get data from backend in the frontend
  database
   create atlas database
