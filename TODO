@@ -23,7 +23,8 @@ frontend
     routes for cart
     routes for login
     routes from products on home page
-  product details
+  ##link footer
+  product details with ListGroup
  backend
   backend routes
   
