@@ -16,6 +16,8 @@ frontend
     add dummy data
     create Product component
   rating
+    rating conponent
+    stars from fontawesome
   react router
   product details
  backend
