@@ -19,6 +19,10 @@ frontend
     rating conponent
     stars from fontawesome
   react router
+    routes for product detail screen
+    routes for cart
+    routes for login
+    routes from products on home page
   product details
  backend
   backend routes
