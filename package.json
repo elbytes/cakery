@@ -1,0 +1,30 @@
+{
+  "name": "cakery",
+  "version": "1.0.0",
+  "description": "cakery e-commerce with mern stack",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+/elbytes/cakery.git"
+  },
+  "keywords": [
+    "mern",
+    "nodejs",
+    "reactjs",
+    "expressjs",
+    "mongodb",
+    "mongoose"
+  ],
+  "author": "elBytes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elbytes/cakery/issues"
+  },
+  "homepage": "https://github.com/elbytes/cakery#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
