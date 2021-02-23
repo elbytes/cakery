@@ -10,13 +10,25 @@ body {
 
 h1{
   color: #8C3503;
+  text-decoration: none;
 }
+
+h2, h3, h4, strong{
+  color: #A6032F;
+}
+a:link {
+  text-decoration: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
-
 main{
   min-height: 90vh;
+}
+
+.product-card{
+  background-color: bisque;
 }

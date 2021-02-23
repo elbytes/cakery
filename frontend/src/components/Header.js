@@ -12,7 +12,7 @@ const Header = () => {
                     height="30"
                     className="d-inline-block align-top"
                 />{' '}
-            The Cakery</Navbar.Brand>
+            Welcome to The Cakery</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
