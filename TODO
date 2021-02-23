@@ -29,8 +29,10 @@ frontend
  setup backend environment
   backend routes
   express
-  install axios
   get data from backend in the frontend
+    install axios
+    useEffect
+    add proxy to package in frontend
  database
   create atlas database
   connect to database
