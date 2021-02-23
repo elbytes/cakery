@@ -80,7 +80,7 @@ const products = [
     price: 39.99,
     countInStock: 0,
     rating: 4,
-    numReviews: 10,
+    numReviews: 100,
   },{
     _id: '8',
     name: 'Strawberry Topped Vanilla Cupcake',

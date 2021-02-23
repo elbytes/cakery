@@ -1,6 +1,7 @@
 import React from 'react'
+import { propTypes } from 'react-bootstrap/esm/Image'
 import products from '../products'
-
+import PropTypes from 'prop-types'
 const Rating = ({value, text}) => {
     return (
         <div className='rating'>
@@ -18,10 +19,14 @@ const Rating = ({value, text}) => {
             </span>
             <span>
                 <i className={value >= 5 ? 'star fas fa-star' : value >=4.5 ? 'star fas fa-star-half-alt' : 'star far fa-star'}></i>
-            </span>
+            </span><br />
             <span>{text ? text : ''}</span>
         </div>
     )
 }
 
+Rating.propTypes = {
+    value: PropTypes.number,
+    text: PropTypes.string
+}
 export default Rating

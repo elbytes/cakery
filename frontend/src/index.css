@@ -14,8 +14,11 @@ h1{
 }
 
 h2, h3, h4, strong{
-  color: #A6032F;
+  color: #772953;
+  padding-top: 0.5rem;;
+  padding-bottom: 0.5rem;;
 }
+
 a:link {
   text-decoration: none;
 }
@@ -36,3 +39,4 @@ main{
 .star{
   color: #F2AB6D;
 }
+
