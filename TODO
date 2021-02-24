@@ -46,7 +46,8 @@ frontend
     user
     order
     products
-  
+    dummy user data
+   bcrypt
   
   
 
