@@ -37,7 +37,7 @@ frontend
     get products from backend in ProductDetails
    nodemon 
    concurrently
-   env variables
+   dotenv 
    ES modules
  database
   create atlas database
