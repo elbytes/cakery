@@ -48,8 +48,9 @@ frontend
     products
     dummy user data
    bcrypt
-  
-  
+   seeder script for db
+   fetch from db
+   express-async-handler middleware to deal with error checking in async routes
 
 
 
