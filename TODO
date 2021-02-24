@@ -38,7 +38,7 @@ frontend
    nodemon 
    concurrently
    dotenv 
-   ES modules
+   convert ndode requires to ES modules
  database
   create atlas database
   connect to database
