@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "cakery e-commerce with mern stack",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
@@ -28,8 +29,10 @@
   },
   "homepage": "https://github.com/elbytes/cakery#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.11.18"
   },
   "devDependencies": {
     "concurrently": "^6.0.0",
