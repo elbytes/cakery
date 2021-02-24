@@ -17,8 +17,7 @@ const importData = async () =>{
         await Product.deleteMany();
         await User.deleteMany();
 
-        await User.insertMany(users);
-        const createdUsers = await Product.insertMany(products);
+        const createdUsers = await User.insertMany(users);
         const adminUser = createdUsers[0]._id //first user in the dummy user data was admin
 
         //set the user to admin for all products so we can insert into db
@@ -49,4 +48,11 @@ const deleteData = async () =>{
         console.error(`${error}`);
         process.exit(1);
     }
+}
+
+
+if(process.argv[2] === '-d'){
+    deleteData();
+} else{
+    importData();
 }
