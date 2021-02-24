@@ -23,7 +23,7 @@ frontend
     routes for cart
     routes for login
     routes from products on home page
-  ##link footer
+    link footer
   product details with ListGroup---------------------
  backend
  setup backend environment
@@ -50,9 +50,21 @@ frontend
    bcrypt
    seeder script for db
    fetch from db
-   express-async-handler middleware to deal with error checking in async routes
+     express-async-handler middleware to deal with error checking in async routes---------------------
+     custom error handling
+    
 
+shopping cart
 
+user auth
+
+checkout
+
+admin screen
+
+reviews
+
+deploy
 
 
 
