@@ -35,3 +35,18 @@ const importData = async () =>{
         process.exit(1);
     }
 }
+
+
+const deleteData = async () =>{
+    try {
+        await Order.deleteMany();
+        await Product.deleteMany();
+        await User.deleteMany();
+
+        console.log('Data deleted from db');
+        process.exit();
+    } catch (error) {
+        console.error(`${error}`);
+        process.exit(1);
+    }
+}
