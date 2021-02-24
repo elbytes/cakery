@@ -33,6 +33,12 @@ frontend
     install axios
     useEffect
     add proxy to package in frontend
+    get products from backend in Home
+    get products from backend in ProductDetails
+   nodemon 
+   concurrently
+   env variables
+   ES modules
  database
   create atlas database
   connect to database
