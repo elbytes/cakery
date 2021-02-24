@@ -14,7 +14,7 @@ const ProductDetails = ({match}) => {
         }
  
         fetchProduct();
-     }, []);
+     }, [match]);
 
 
     return (

@@ -8,7 +8,7 @@ const Home = () => {
 
     //load the products as soon as the component loads
     useEffect(()=>{
-       const fetchProducts = async () =>{
+       const fetchProducts = async () =>{ //we can also use .then after axios.get 
            const { data } = await axios.get('/api/products'); //destructure response
            setProducts(data);
        }
