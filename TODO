@@ -43,6 +43,9 @@ frontend
   create atlas database
   connect to database
   database schema and model
+    user
+    order
+    products
   
   
   
