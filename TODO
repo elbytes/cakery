@@ -60,6 +60,7 @@ frontend
     listProducts action
     dispatch listProducts action to Home screen/ useDispatch
     display the fetched list on Home / useSelector
+    loading spinner
 shopping cart
 
 user auth
