@@ -58,6 +58,8 @@ frontend
     consts 
     productList reducer
     listProducts action
+    dispatch listProducts action to Home screen/ useDispatch
+    display the fetched list on Home / useSelector
 shopping cart
 
 user auth
