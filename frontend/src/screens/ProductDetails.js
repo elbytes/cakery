@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Card, Button, ListGroupItem, Form } from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import { useDispatch, useSelector} from 'react-redux'
 import { listProductsDetails } from '../actions/productActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 
-const ProductDetails = ({match}) => {
+const ProductDetails = ({history, match}) => {
     const [quantity, setQuantity] = useState(0);
     
     const dispatch = useDispatch()
@@ -18,6 +18,11 @@ const ProductDetails = ({match}) => {
     useEffect(()=>{
         dispatch(listProductsDetails(match.params.id))
      }, [dispatch, match]);
+
+     //get product id and redirect to /cat with the id and quantity
+     const addToCartHandler = () =>{
+        history.push(`/cart/${match.params.id}?quantity=${quantity}`)
+     }
 
     return (
         <>
@@ -88,7 +93,12 @@ const ProductDetails = ({match}) => {
                         )}
 
                         <ListGroup.Item>
-                            <Button className='btn btn-block btn-custom' type='button' disabled={product.countInStock === 0 }>Add Yummy to Cart</Button>
+                            <Button 
+                            onClick={ addToCartHandler }
+                            className='btn btn-block btn-custom' 
+                            type='button' 
+                            disabled={product.countInStock === 0 }>
+                            Add Yummy to Cart</Button>
                         </ListGroup.Item>
                     </ListGroup>
                 </Card>
