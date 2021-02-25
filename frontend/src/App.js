@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import {Container} from 'react-bootstrap'
 import Home from './screens/Home'
 import ProductDetails from './screens/ProductDetails'
-
+import Cart from './screens/Cart'
 
 const App = () =>{
   return (
@@ -14,6 +14,7 @@ const App = () =>{
         <Container>
           <Route path='/' component={Home} exact/>
           <Route path='/product/:id' component={ProductDetails} />
+          <Route path='/cart/:id?' component={Cart} />
         </Container>
       </main>
       <Footer />
