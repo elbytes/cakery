@@ -51,9 +51,13 @@ frontend
    seeder script for db
    fetch from db
      express-async-handler middleware to deal with error checking in async routes---------------------
-     custom error handling
-    
-
+     custom error handling / overriding default error handler with middleware
+ frontend state management
+    install redux react-redux redux-thunk (for async requests) redux-devtools-extension
+    redux store file
+    consts 
+    productList reducer
+    listProducts action
 shopping cart
 
 user auth
