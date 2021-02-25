@@ -55,16 +55,33 @@ frontend
  frontend state management
     install redux react-redux redux-thunk (for async requests) redux-devtools-extension
     redux store file
-    consts 
+    productList consts 
     productList reducer
     listProducts action
     dispatch listProducts action to Home screen/ useDispatch
     display the fetched list on Home / useSelector
-    loading spinner
+    productDetails const
+    productDetail reducer
+    productDetails action
+    dispatch productDetails action to ProductDetails screen / useDispatch
+    display the fetched product on Home / useSelector
+      loading spinner for loading / react-bootstrap
+      loading error message from component / react bootstrap Alert---------------------
 shopping cart
-
+  add to cart btn
+  select order quantity
+  cart reducer
+  cart action
+  dispatch card
+  add to cart
+  cart screen
+  remove from cart
+  
 user auth
-
+  backednd
+  
+  frontend
+  
 checkout
 
 admin screen
