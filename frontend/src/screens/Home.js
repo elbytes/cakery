@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import Product from '../components/Product'
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux'
+import {listProducts} from '../actions/productActions.js'
 
 const Home = () => {
-    const [products, setProducts] = useState([]);
-
-    //load the products as soon as the component loads
+    const dispatch = useDispatch()
+    
     useEffect(()=>{
-       const fetchProducts = async () =>{ //we can also use .then after axios.get 
-           const { data } = await axios.get('/api/products'); //destructure response
-           setProducts(data);
-       }
+      dispatch(listProducts())
+    }, [dispatch]);
 
-       fetchProducts();
-    }, []);
+    const products = []
 
     return (
         <>
