@@ -8,7 +8,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 
 const ProductDetails = ({history, match}) => {
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
     
     const dispatch = useDispatch()
 
