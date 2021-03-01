@@ -3,7 +3,7 @@ import { useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import Message from '../components/Message'
-import { addToCart } from '../actions/cartActions'
+import { addToCart, removeFromCart } from '../actions/cartActions'
 
 const Cart = ({match, location, history}) => {
     const productId = match.params.id
@@ -21,7 +21,7 @@ const Cart = ({match, location, history}) => {
     }, [dispatch, productId, qty])
 
     const removeFromCartHandler = (id) =>{
-        console.log('removed');
+        dispatch(removeFromCart(id))
     }
 
     const checkoutHandler = () =>{
@@ -69,7 +69,7 @@ const Cart = ({match, location, history}) => {
                 <Card className='checkout-card'>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
-                            <h2>Subtotal ({cartItems.reduce((acc, item)=> acc + item.qty, 0)}) items </h2>
+                            <h2>Subtotal ({cartItems.reduce((acc, item)=> acc + Number(item.qty), 0)}) items </h2>
                             ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0 ).toFixed(2)}
                         </ListGroup.Item>
                         <ListGroup.Item>
