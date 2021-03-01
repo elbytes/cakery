@@ -1,5 +1,5 @@
 body {
-  background-color: #F2CDAC;
+  background-color: #f5efef;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -11,12 +11,14 @@ body {
 h1{
   color: #8C3503;
   text-decoration: none;
+  padding: 0.3rem;
 }
 
 h2, h3, h4, strong{
   color: #772953;
-  padding-top: 0.5rem;;
-  padding-bottom: 0.5rem;;
+  font-size: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 a:link {
@@ -33,7 +35,8 @@ main{
 }
 
 .product-card{
-  background-color: bisque;
+  background-color: rgb(253, 246, 237);
+  padding: 0.8rem;
 }
 
 .star{
@@ -47,4 +50,9 @@ main{
 
 .test{
   background-color: rgb(255, 245, 238);
+}
+
+.checkout-card{
+  margin-top: 4rem;
+  background: rgb(255, 137, 137);
 }

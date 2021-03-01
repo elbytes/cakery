@@ -24,6 +24,9 @@ const Cart = ({match, location, history}) => {
         console.log('removed');
     }
 
+    const checkoutHandler = () =>{
+        history.push('/login?redirect=shipping')
+    }
     return (
         <Row>
             <Col md={8}>
@@ -31,7 +34,7 @@ const Cart = ({match, location, history}) => {
                 {cartItems.length === 0 ? <Message>Your cart is empty<Link to='/'>  Go Back to Home</Link></Message> : (
                     <ListGroup variant='flush'>
                         {cartItems.map(item =>(
-                            <ListGroup.Item key={item.product}>
+                            <ListGroup.Item key={item.product} className='product-card'>
                                 <Row>
                                     <Col md={2}>
                                         <Image src={item.image} alt={item.name} fluid rounded />
@@ -42,7 +45,7 @@ const Cart = ({match, location, history}) => {
                                     <Col md={2}>${item.price}</Col>
                                     <Col md={2}>
                                     <Form.Control as ='select' 
-                                        value={qty} 
+                                        value={item.qty} 
                                         onChange={e=>  dispatch(addToCart(item.product, Number(e.target.value)))}>
                                            { [...Array(item.countInStock).keys()].map((x) =>(
                                                 <option key={x + 1} value={x + 1}>
@@ -62,11 +65,19 @@ const Cart = ({match, location, history}) => {
                     </ListGroup>
                 )}
             </Col>
-            <Col md={2}>
-
-            </Col>
-            <Col md={2}>
-
+            <Col md={4}>
+                <Card className='checkout-card'>
+                    <ListGroup variant='flush'>
+                        <ListGroup.Item>
+                            <h2>Subtotal ({cartItems.reduce((acc, item)=> acc + item.qty, 0)}) items </h2>
+                            ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0 ).toFixed(2)}
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <Button type='button' className='btn-block' disabled={cartItems.length === 0}
+                            onClick={ checkoutHandler}>Checkout</Button>
+                        </ListGroup.Item>
+                    </ListGroup>
+                </Card>
             </Col>
         </Row>
     )
