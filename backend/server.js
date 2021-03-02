@@ -2,11 +2,15 @@ import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './config/database.js'
 import productRoutes from './routes/productRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 import  { notFound, errorHandler} from './middlewares/errorMiddleware.js'
 
 dotenv.config();
 
 const app = express();
+
+//to use body-parser
+app.use(express.json())
 
 connectDB();
 
@@ -15,6 +19,7 @@ app.get('/', (req, res)=>{
 })
 
 app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes);
 
 //calling custom error handling middlewares
 app.use(notFound);
