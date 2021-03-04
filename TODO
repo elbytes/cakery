@@ -82,6 +82,7 @@ user auth
     user endpoints
     authenticate with comapre bcrypt
 authorization
+add login route
 generate json web token
     
     user reg and pass encrption
