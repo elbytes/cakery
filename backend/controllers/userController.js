@@ -23,6 +23,8 @@ const authUser = asyncHandler(async (req, res) =>{
     }
 })
 
+
+
 const getUserProfile = asyncHandler(async (req, res) =>{
    const user = await User.findById(req.user._id)
    if(user){
@@ -38,4 +40,32 @@ const getUserProfile = asyncHandler(async (req, res) =>{
    }
 })
 
-export {authUser, getUserProfile}
+
+
+const registerUser = asyncHandler(async (req, res) =>{
+    const { name, email, password } =  req.body
+    const userExists = await User.findOne({ email })
+
+    if(user){
+        res.status(400)
+        throw new Error('User already exists, Please login instead')
+    }
+    
+    const newUser = await User.create({name, email, password})
+
+    if(newUser){
+        res.status(201).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            admin: user.admin,
+            token: generateToken(user._id),
+        })
+    }else{
+        res.status(400)
+        throw new Error('The user data is invalid')
+    }
+})
+
+
+export {authUser, getUserProfile, registerUser}
