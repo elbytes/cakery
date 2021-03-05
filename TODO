@@ -86,8 +86,27 @@ add login route
 generate json web token
     
     user reg and pass encrption
-    
+      registerUser in controller
+      middleware to hash password pre.save
+      route to /user for reg
   frontend
+    login
+      login action
+      login reducer
+      login screen
+      login functionality
+      show user in nav
+      show logout
+    reg
+      reg action
+      reg reducer
+      reg screen
+      
+    profile
+      profile screen
+      update profile
+      
+
   
 checkout
 
