@@ -105,9 +105,11 @@ generate json web token
       
     profile
       profile screen
-      update profile
+      update profile/backend
         update controller
         update route
+      update profile/front
+        updare user screen
       
 
   
