@@ -8,7 +8,7 @@ const Footer = () => {
             <Row>
                 <Col className='text-center py-3'>
                     <a href='https://github.com/elbytes/cakery' target='blank'>
-                        Copyright &copy; elBytes
+                        created for tastebuds by &copy;elBytes
                     </a>
                 </Col>
             </Row>
