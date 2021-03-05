@@ -91,6 +91,7 @@ generate json web token
       route to /user for reg
   frontend
     login
+      usr consts
       login action
       login reducer
       login screen
