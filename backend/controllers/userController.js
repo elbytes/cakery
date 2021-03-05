@@ -3,7 +3,6 @@ import asyncHandler from 'express-async-handler'
 import generateToken from '../utils/generateToken.js'
 
 //authenticate user post/api/users/login
-
 const authUser = asyncHandler(async (req, res) =>{
     const { email, password } =  req.body
     const user = await User.findOne({ email })
@@ -23,7 +22,7 @@ const authUser = asyncHandler(async (req, res) =>{
     }
 })
 
-
+//register user post/api/users/
 const registerUser = asyncHandler(async (req, res) =>{
     const { name, email, password } =  req.body
     const userExists = await User.findOne({ email })
@@ -49,6 +48,7 @@ const registerUser = asyncHandler(async (req, res) =>{
     }
 })
 
+//get user get/api/users/profile
 const getUserProfile = asyncHandler(async (req, res) =>{
    const user = await User.findById(req.user._id)
    if(user){
@@ -64,8 +64,27 @@ const getUserProfile = asyncHandler(async (req, res) =>{
    }
 })
 
+//put user get/api/users/profile
+const UpdateUserProfile = asyncHandler(async (req, res) =>{
+    const user = await User.findById(req.user._id)
+    if(user){
+         user.name = req.body.name || user.name
+         user.email = req.body.email  || user.email
+         if(req.body.password){
+             user.password = req.body.password
+         }
+         const updatedUser = await user.save()
+         res.json({
+            _id: updatedUser._id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            admin: updatedUser.admin,
+            token: generateToken(updatedUser._id),
+        })
+    }else{
+        res.status(401)
+        throw new Error('User not found')
+    }
+ })
 
-
-
-
-export {authUser, getUserProfile, registerUser}
+export {authUser, getUserProfile, registerUser,}
