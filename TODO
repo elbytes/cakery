@@ -106,6 +106,8 @@ generate json web token
     profile
       profile screen
       update profile
+        update controller
+        update route
       
 
   
