@@ -7,6 +7,7 @@ import ProductDetails from './screens/ProductDetails'
 import Cart from './screens/Cart'
 import Login from './screens/Login'
 import Register from './screens/Register'
+import Profile from './screens/Profile'
 
 const App = () =>{
   return (
@@ -19,6 +20,7 @@ const App = () =>{
           <Route path='/cart/:id?' component={Cart} />
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register}/>
+          <Route path='/profile' component={Profile}/>
         </Container>
       </main>
       <Footer />
