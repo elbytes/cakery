@@ -9,6 +9,7 @@ import Login from './screens/Login'
 import Register from './screens/Register'
 import Profile from './screens/Profile'
 import ShippinScreen from './screens/ShippinScreen'
+import PaymentMethodScreen from './screens/PaymentMethodScreen'
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path='/register' component={Register} />
           <Route path='/profile' component={Profile} />
           <Route path='/shipping' component={ShippinScreen} />
+          <Route path='/payment' component={PaymentMethodScreen} />
         </Container>
       </main>
       <Footer />
