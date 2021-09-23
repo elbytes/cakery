@@ -12,7 +12,7 @@ const orderSchema = mongoose.Schema({
                 type: String,
                 required: true
             },
-            quantity:{
+            qty:{
                 type: Number,
                 required: true
             },
@@ -24,16 +24,12 @@ const orderSchema = mongoose.Schema({
                 type: Number,
                 required: true
             },
-            product:{
+            product_id:{
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Product'
             },
         }],
     shippingAddress:{
-        address: {
-            type: String,
-            required: true
-        },
         address: {
             type: String,
             required: true
@@ -46,10 +42,14 @@ const orderSchema = mongoose.Schema({
             type: String,
             required: true
         },
-        zip: {
+        postalCode: {
             type: String,
             required: true
         },
+        country: {
+            type: String,
+            required: true
+        }
     },
     paymentMethod:{
         type: String,

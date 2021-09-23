@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Message from '../components/Message'
 import Breadcrumb from '../components/Breadcrumb'
+import { createOrder } from '../actions/orderActions'
 
-const PlaceOrderScreen = () => {
+const PlaceOrderScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart)
-
+  const dispatch = useDispatch()
   const addDecimals = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2)
   }
@@ -21,8 +22,29 @@ const PlaceOrderScreen = () => {
     Number(cart.shippingPrice) +
     Number(cart.taxPrice)
   ).toFixed(2)
-  const placeorderHandler = (e) => {
-    e.preventDefault()
+
+  const orderCreate = useSelector((state) => state.orderCreate)
+  const { order, success, error } = orderCreate
+
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${order._id}`)
+    }
+    // eslint-disable-next-line
+  }, [history, success])
+
+  const placeorderHandler = () => {
+    dispatch(
+      createOrder({
+        orderItems: cart.cartItems,
+        shippingAddress: cart.shippingAddress,
+        paymentMethod: cart.paymentMethod,
+        itemsPrice: cart.itemsPrice,
+        shippingPrice: cart.shippingPrice,
+        taxPrice: cart.taxPrice,
+        totalPrice: cart.totalPrice,
+      })
+    )
   }
   return (
     <>
@@ -57,7 +79,8 @@ const PlaceOrderScreen = () => {
             <ListGroup.Item>
               <h3>Shipping Address: </h3>
               {cart.shippingAddress.address}, {cart.shippingAddress.city},
-              {cart.shippingAddress.postalCode}, {cart.shippingAddress.country}
+              {cart.shippingAddress.state},{cart.shippingAddress.postalCode},
+              {cart.shippingAddress.country}
             </ListGroup.Item>
 
             <ListGroup.Item>
@@ -99,6 +122,9 @@ const PlaceOrderScreen = () => {
                   </Col>
                   <Col>${cart.totalPrice}</Col>
                 </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                {error && <Message variant='danger'>{error}</Message>}
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button

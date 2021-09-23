@@ -10,15 +10,15 @@ const ShippinScreen = ({ history }) => {
   const { shippingAddress } = cart
   const [address, setAddress] = useState(shippingAddress.address)
   const [city, setCity] = useState(shippingAddress.city)
-  const [postalCode, setPostalCode] = useState(shippingAddress.posatlCode)
   const [state, setState] = useState(shippingAddress.state)
+  const [postalCode, setPostalCode] = useState(shippingAddress.posatlCode)
   const [country, setCountry] = useState(shippingAddress.country)
 
   const dispatch = useDispatch()
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(saveShippingAddress({ address, city, postalCode, country }))
+    dispatch(saveShippingAddress({ address, city, state, postalCode, country }))
     history.push('/payment')
   }
 
@@ -28,12 +28,13 @@ const ShippinScreen = ({ history }) => {
       <h1>Shiping</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='address`'>
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Address</Form.Label>
           <Form.Control
             type='text'
             placeholder='Enter Your Address'
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            required
           ></Form.Control>
         </Form.Group>
 
@@ -44,6 +45,7 @@ const ShippinScreen = ({ history }) => {
             placeholder='Enter Your City'
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            required
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='posatlCode`'>
@@ -53,6 +55,7 @@ const ShippinScreen = ({ history }) => {
             placeholder='Enter Your Zip Code/ Postal Code'
             value={postalCode}
             onChange={(e) => setPostalCode(e.target.value)}
+            required
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='state'>
@@ -62,6 +65,7 @@ const ShippinScreen = ({ history }) => {
             placeholder='Enter Your State'
             value={state}
             onChange={(e) => setState(e.target.value)}
+            required
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='county'>
@@ -71,6 +75,7 @@ const ShippinScreen = ({ history }) => {
             placeholder='Enter Your county'
             value={country}
             onChange={(e) => setCountry(e.target.value)}
+            required
           ></Form.Control>
         </Form.Group>
         <Button type='submit' variant='primary'>
