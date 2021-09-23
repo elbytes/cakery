@@ -5,11 +5,13 @@ import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import { notFound, errorHandler } from './middlewares/errorMiddleware.js'
-
+import morgan from 'morgan'
 dotenv.config()
 
 const app = express()
-
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+}
 //to use body-parser
 app.use(express.json())
 
