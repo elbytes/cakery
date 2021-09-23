@@ -11,6 +11,7 @@ const ShippinScreen = ({ history }) => {
   const [address, setAddress] = useState(shippingAddress.address)
   const [city, setCity] = useState(shippingAddress.city)
   const [postalCode, setPostalCode] = useState(shippingAddress.posatlCode)
+  const [state, setState] = useState(shippingAddress.state)
   const [country, setCountry] = useState(shippingAddress.country)
 
   const dispatch = useDispatch()
@@ -52,6 +53,15 @@ const ShippinScreen = ({ history }) => {
             placeholder='Enter Your Zip Code/ Postal Code'
             value={postalCode}
             onChange={(e) => setPostalCode(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group controlId='state'>
+          <Form.Label>State</Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Enter Your State'
+            value={state}
+            onChange={(e) => setState(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId='county'>
