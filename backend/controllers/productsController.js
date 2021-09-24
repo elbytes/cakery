@@ -23,7 +23,7 @@ const getProductByID = asyncHandler(async (req, res) => {
 
 //Create new reviews
 //@route POST /api/products/:id:/reviews
-//@action Private
+//@access Private
 const addProductReview = asyncHandler(async (req, res) => {
   const { rating, reviewBody } = req.body
   const product = await Product.findById(req.params.id)
@@ -58,4 +58,47 @@ const addProductReview = asyncHandler(async (req, res) => {
   }
 })
 
-export { getProductByID, getProducts, addProductReview }
+//Delete a product
+//@route DELETE /api/products/:id:
+//@access Private Admin
+const deleteProduct = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id)
+  if (product) {
+    await product.remove()
+    res.json({ message: 'Product removed' })
+  } else {
+    res.status(404)
+    throw new Error('Product not found')
+  }
+})
+
+//put product put/api/users/profile private admin
+const updateProduct = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id)
+  if (product) {
+    product.name = req.body.name || product.name
+    product.price = req.body.price || product.price
+    product.category = req.body.category
+    product.description = req.body.description
+    product.countInStock = req.body.countInStock
+    const updatedProduct = await product.save()
+    res.json({
+      _id: updatedProduct._id,
+      name: updatedProduct.name,
+      price: updatedProduct.price,
+      description: updatedProduct.description,
+      countInStock: updatedProduct.countInStock,
+    })
+  } else {
+    res.status(401)
+    throw new Error('Product not found')
+  }
+})
+
+export {
+  getProductByID,
+  getProducts,
+  addProductReview,
+  deleteProduct,
+  updateProduct,
+}

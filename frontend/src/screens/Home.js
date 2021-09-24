@@ -16,7 +16,7 @@ const Home = ({ history, match }) => {
 
   useEffect(() => {
     dispatch(listProducts(keyword))
-  }, [dispatch])
+  }, [dispatch, keyword])
 
   return (
     <>
