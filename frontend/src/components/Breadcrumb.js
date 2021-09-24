@@ -1,5 +1,5 @@
 import React from 'react'
-import { Nav, NavbarBrand } from 'react-bootstrap'
+import { Nav } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
 const Breadcrumb = ({ signIn, shipping, payment, placeorder }) => {
