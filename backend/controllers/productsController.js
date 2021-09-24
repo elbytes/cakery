@@ -2,7 +2,11 @@ import Product from '../models/productModel.js'
 import asyncHandler from 'express-async-handler'
 
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({})
+  console.log('object')
+  const keyword = req.query.keyword
+    ? { name: { $regex: req.query.keyword, $options: 'i' } }
+    : {}
+  const products = await Product.find({ ...keyword })
   res.json(products)
 })
 
@@ -28,7 +32,7 @@ const addProductReview = asyncHandler(async (req, res) => {
     const reviewExists = product?.reviews?.find(
       (r) => r.user.toString() === req.user._id.toString()
     )
-console.log(req.user);
+    console.log(req.user)
     if (reviewExists) {
       res.status(400)
       throw new Error('You have already posted a review for this product')
