@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  listProductsDetails,
-  addProductReview,
-} from '../actions/productActions'
+import { listProductDetails, addProductReview } from '../actions/productActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
@@ -34,7 +31,7 @@ const ProductDetails = ({ history, match }) => {
       setReviewBody('')
       dispatch(PRODUCT_CREATE_REVIEW_RESET)
     }
-    dispatch(listProductsDetails(match.params.id))
+    dispatch(listProductDetails(match.params.id))
   }, [dispatch, match, success])
 
   //get product id and redirect to /cat with the id and quantity

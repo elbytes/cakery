@@ -4,7 +4,12 @@ import { Button, Table, Row, Col, Image } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import { listProducts, deleteProduct } from '../actions/productActions'
+import {
+  listProducts,
+  deleteProduct,
+  createProduct,
+} from '../actions/productActions'
+import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
 const ProductListScreen = ({ history, match }) => {
   const dispatch = useDispatch()
@@ -18,25 +23,42 @@ const ProductListScreen = ({ history, match }) => {
     success: successProductDelete,
     error: errorProductDelete,
   } = productDelete
-
+  const productCreate = useSelector((state) => state.productCreate)
+  const {
+    loading: loadingProductCreate,
+    success: successProductCreate,
+    product: createdProduct,
+    error: errorProductCreate,
+  } = productCreate
   useEffect(() => {
-    if (userInfo && userInfo.admin) {
-      dispatch(listProducts())
-    } else {
+    dispatch({ type: PRODUCT_CREATE_RESET })
+    if (!userInfo.admin) {
       history.push('/login')
     }
-  }, [dispatch, history, userInfo, successProductDelete])
+    if (successProductCreate) {
+      history.push(`/admin/product/${createdProduct._id}/edit`)
+    } else {
+      dispatch(listProducts())
+    }
+  }, [
+    dispatch,
+    history,
+    userInfo,
+    successProductDelete,
+    successProductCreate,
+    createdProduct,
+  ])
 
   const deletehandler = (id) => {
-    if (window.confirm(`Are you sure you want to delete user #${id}`)) {
+    if (window.confirm(`Are you sure you want to delete product #${id}`)) {
       dispatch(deleteProduct(id))
     }
     if (successProductDelete) {
       window.alert('Product deleted')
     }
   }
-  const createProductHandler = (product) => {
-    //
+  const createProductHandler = () => {
+    dispatch(createProduct())
   }
 
   return (
@@ -53,6 +75,8 @@ const ProductListScreen = ({ history, match }) => {
       </Row>
       {loadingProductDelete && <Loader />}
       {errorProductDelete && <Message>{errorProductDelete}</Message>}
+      {loadingProductCreate && <Loader />}
+      {errorProductCreate && <Message>{errorProductCreate}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (

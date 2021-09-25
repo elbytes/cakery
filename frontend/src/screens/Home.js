@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Route } from 'react-router-dom'
 import { Col, Row } from 'react-bootstrap'
 import Product from '../components/Product'
 import { useDispatch, useSelector } from 'react-redux'

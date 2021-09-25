@@ -72,7 +72,29 @@ const deleteProduct = asyncHandler(async (req, res) => {
   }
 })
 
-//put product put/api/users/profile private admin
+//Create a product
+//@route POST /api/products
+//@access Private Admin
+const createProduct = asyncHandler(async (req, res) => {
+  const product = new Product({
+    name: 'Sample name',
+    price: 0,
+    user: req.user._id,
+    image: '/images/sample.jpg',
+    description: 'Sample description',
+    countInStock: 0,
+    rating: 0,
+    numReviews: 0,
+    category: 'Sample category',
+  })
+  const createdProduct = await product.save()
+  res.status(201)
+  res.json(createdProduct)
+})
+
+//Update product
+//@routeput/api/products/:id
+//@access private admin
 const updateProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
   if (product) {
@@ -90,7 +112,7 @@ const updateProduct = asyncHandler(async (req, res) => {
       countInStock: updatedProduct.countInStock,
     })
   } else {
-    res.status(401)
+    res.status(404)
     throw new Error('Product not found')
   }
 })
@@ -100,5 +122,6 @@ export {
   getProducts,
   addProductReview,
   deleteProduct,
+  createProduct,
   updateProduct,
 }
