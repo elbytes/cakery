@@ -12,7 +12,7 @@ const SearchBox = ({ history }) => {
     }
   }
   return (
-    <Form onSubmit={submitHandler} inline classname='mr-0'>
+    <Form onSubmit={submitHandler} inline className='mr-0'>
       <Form.Control
         type='search'
         name='q'

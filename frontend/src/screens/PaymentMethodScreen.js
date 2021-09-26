@@ -42,11 +42,12 @@ const PaymentMethodScreen = ({ history }) => {
             ></Form.Check>
             <Form.Check
               type='radio'
-              label='Stripe'
-              id='Stripe'
+              label='Cash or Check'
+              id='CashorCheck'
               name='paymentMethod'
-              value='Stripe'
+              value='CashorCheck'
               onChange={(e) => setPaymentMethod(e.target.value)}
+              disabled
             ></Form.Check>
           </Col>
         </Form.Group>
