@@ -7,6 +7,7 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listProductDetails, editProduct } from '../actions/productActions'
 import FormContainer from '../components/FormContainer'
+import axios from 'axios'
 
 const EditProductScreen = ({ match, history }) => {
   const productId = match.params.id
@@ -17,6 +18,7 @@ const EditProductScreen = ({ match, history }) => {
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
   const [countInStock, setCountInStock] = useState(0)
+  const [uploading, setUploading] = useState(false)
 
   const dispatch = useDispatch()
 
@@ -46,7 +48,7 @@ const EditProductScreen = ({ match, history }) => {
         setImage(product.image)
       }
     }
-  }, [dispatch, history, product, name, productId, successProductEdit])
+  }, [dispatch, history, product, productId, successProductEdit])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -61,6 +63,29 @@ const EditProductScreen = ({ match, history }) => {
         image,
       })
     )
+  }
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('image', file)
+    setUploading(true)
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+
+      const { data } = await axios.post('/api/upload', formData, config)
+
+      setImage(data)
+      setUploading(false)
+    } catch (error) {
+      console.error(error)
+      setUploading(false)
+    }
   }
 
   return (
@@ -78,7 +103,7 @@ const EditProductScreen = ({ match, history }) => {
           <Message>{error}</Message>
         ) : (
           <Form onSubmit={submitHandler}>
-            <Form.Group controlId='name`'>
+            <Form.Group controlId='name'>
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type='text'
@@ -127,13 +152,9 @@ const EditProductScreen = ({ match, history }) => {
 
             <Form.Group controlId='imageUrl'>
               <Form.Label>Image URL</Form.Label>
-              <Form.Control type='text' value={image} />
-            </Form.Group>
-
-            <p>OR:</p>
-            <Form.Group controlId='formFile' className='mb-3'>
-              <Form.Label>Choose product image:</Form.Label>
-              <Form.Control type='file' />
+                  <Form.Control type='text' value={image} />
+                  <Form.File id='upload' label='Choose File' custom onChange={uploadFileHandler}></Form.File>
+                  { uploading && <Loader /> }
             </Form.Group>
 
             <Row className='my-4 mx-auto'>

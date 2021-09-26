@@ -100,8 +100,8 @@ const updateProduct = asyncHandler(async (req, res) => {
   if (product) {
     product.name = req.body.name || product.name
     product.price = req.body.price || product.price
-    product.category = req.body.category
-    product.description = req.body.description
+    product.category = req.body.category || product.category
+    product.description = req.body.description || product.description
     product.countInStock = req.body.countInStock
     const updatedProduct = await product.save()
     res.json({
