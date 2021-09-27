@@ -7,7 +7,6 @@ import Message from '../components/Message.js'
 import Loader from '../components/Loader.js'
 import SearchBox from '../components/SearchBox'
 import PaginationComponent from '../components/PaginationComponent'
-import TopCarousel from '../components/TopCarousel'
 
 const Home = ({ history, match }) => {
   const dispatch = useDispatch()
@@ -55,7 +54,6 @@ const Home = ({ history, match }) => {
             pages={pages}
             page={page}
             keyword={keyword ? keyword : ''}
-            admin={userInfo.admin}
           />
         </>
       )}
