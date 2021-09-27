@@ -8,13 +8,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1{
-  color: #8C3503;
+h1 {
+  color: #8c3503;
   text-decoration: none;
   padding: 0.3rem;
 }
 
-h2, h3, h4, strong{
+h2,
+h3,
+h4,
+strong {
   color: #772953;
   font-size: 1.5rem;
   padding-top: 0.5rem;
@@ -30,29 +33,53 @@ code {
     monospace;
 }
 
-main{
+main {
   min-height: 90vh;
 }
 
-.product-card{
+.product-card {
   background-color: rgb(253, 246, 237);
   padding: 0.8rem;
 }
 
-.star{
-  color: #F2AB6D;
+.star {
+  color: #f2ab6d;
 }
 
-.btn-custom{
+.btn-custom {
   background-color: #772953;
   color: aliceblue;
 }
 
-.test{
+.test {
   background-color: rgb(255, 245, 238);
 }
 
-.checkout-card{
+.checkout-card {
   margin-top: 4rem;
   background: rgb(255, 137, 137);
+}
+
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item-active {
+  display: flex;
+}
+.carousel-caption {
+  position: absolute;
+  top: 0;
+  margin-left: 0px;
+}
+.carousel-caption h2 {
+  color: #fff;
+}
+.carousel-image {
+  height: 400px;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5%;
+}
+.carousel a {
+  margin: 0 auto;
 }

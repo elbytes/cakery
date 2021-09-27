@@ -10,7 +10,7 @@ import { ORDER_PAY_RESET } from '../constants/orderConstants'
 import axios from 'axios'
 import { PayPalButton } from 'react-paypal-button-v2'
 
-const OrderDetailsScreen = ({ match }) => {
+const OrderDetailsScreen = ({ match, history }) => {
   const orderId = match.params.id
   const dispatch = useDispatch()
   const [paypalReady, setPayPalReady] = useState(false)
@@ -20,6 +20,8 @@ const OrderDetailsScreen = ({ match }) => {
   const orderPay = useSelector((state) => state.orderPay)
   const { loading: payLoading, success: paySuccess } = orderPay
 
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
   if (!loading) {
     const addDecimals = (num) => {
       return (Math.round(num * 100) / 100).toFixed(2)
@@ -30,6 +32,10 @@ const OrderDetailsScreen = ({ match }) => {
   }
 
   useEffect(() => {
+    if (!userInfo) {
+      history.push('/login')
+    }
+
     const payPalScript = async () => {
       const { data: clientId } = await axios.get('/api/config/paypal')
       const script = document.createElement('script')
@@ -52,7 +58,7 @@ const OrderDetailsScreen = ({ match }) => {
         setPayPalReady(true)
       }
     }
-  }, [orderId, order, dispatch, paySuccess])
+  }, [orderId, order, dispatch, paySuccess, history, userInfo])
 
   const successPaymentHandler = (paymentResult) => {
     dispatch(payOrder(orderId, paymentResult))

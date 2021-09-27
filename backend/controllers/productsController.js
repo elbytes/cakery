@@ -2,12 +2,16 @@ import Product from '../models/productModel.js'
 import asyncHandler from 'express-async-handler'
 
 const getProducts = asyncHandler(async (req, res) => {
-  console.log('object')
+  const listSize = 8
+  const page = Number(req.query.pageNumber) || 1
   const keyword = req.query.keyword
     ? { name: { $regex: req.query.keyword, $options: 'i' } }
     : {}
+  const count = await Product.countDocuments({ ...keyword })
   const products = await Product.find({ ...keyword })
-  res.json(products)
+    .limit(listSize)
+    .skip(listSize * (page - 1))
+  res.json({ products, page, pages: Math.ceil(count / listSize) })
 })
 
 const getProductByID = asyncHandler(async (req, res) => {
@@ -103,14 +107,29 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.category = req.body.category || product.category
     product.description = req.body.description || product.description
     product.countInStock = req.body.countInStock
+    product.image = req.body.image || product.image
     const updatedProduct = await product.save()
     res.json({
       _id: updatedProduct._id,
       name: updatedProduct.name,
+      image: updatedProduct.image,
       price: updatedProduct.price,
       description: updatedProduct.description,
       countInStock: updatedProduct.countInStock,
     })
+  } else {
+    res.status(404)
+    throw new Error('Product not found')
+  }
+})
+
+//Product carousel
+//@route get/api/products/top
+//@access public
+const getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(5)
+  if (products) {
+    res.json(products)
   } else {
     res.status(404)
     throw new Error('Product not found')
@@ -124,4 +143,5 @@ export {
   deleteProduct,
   createProduct,
   updateProduct,
+  getTopProducts,
 }

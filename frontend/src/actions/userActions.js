@@ -62,11 +62,15 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
   localStorage.removeItem('userInfo')
+  localStorage.removeItem('cartItems')
+  localStorage.removeItem('shippingAddress')
+  localStorage.removeItem('paymentMethod')
   dispatch({ type: USER_LOGOUT })
   dispatch({ type: USER_DETAILS_RESET })
   dispatch({ type: ORDER_MY_LIST_RESET })
   dispatch({ type: CART_RESET })
   dispatch({ type: GET_ALL_USERS_RESET })
+  document.location.href = '/login'
 }
 
 export const register = (name, email, password) => async (dispatch) => {
